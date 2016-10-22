@@ -1,0 +1,1 @@
+angular.module('socialStreamApp', ['ngRoute', 'appRoutes', 'MainCtrl']);
