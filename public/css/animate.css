@@ -9,7 +9,7 @@
 }
 
 .repeated-item.ng-leave {
-  animation: 0.4s my_animation;
+  animation: 0.7s my_animation;
 }
 
 @keyframes my_animation {
