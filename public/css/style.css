@@ -1,5 +1,17 @@
 body{
-	font-family: 'Trirong', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	background: #fff;
-	color: #89c638;
+	color: #000;
+    text-align: left;
+}
+h1{
+    color: #89c638;
+}
+h1, h4{
+    text-align: center;
+}
+strong{ 
+    text-decoration: bold; }
+table{
+    color: #000;
 }

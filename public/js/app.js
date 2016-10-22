@@ -1,1 +1,1 @@
-angular.module('socialStreamApp', ['ngRoute', 'appRoutes', 'MainCtrl']);
+angular.module('SecondHarvestApp', ['ngRoute', 'appRoutes', 'MainCtrl']);
