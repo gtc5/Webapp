@@ -43,7 +43,7 @@
 		    <uib-tab index="0" heading="Donor">
 		    	<h3>Donor Overview</h3>
 		    	<input placeholder="Search" class="form-control search-input" ng-model="searchDonor" type="text" />
-		    	<table class="table table-bordered">
+		    	<table class="table table-bordered table-striped table-hover table-nonfluid">
 					<tr>
 						<th>Name</th>
 						<th>Location</th>
@@ -58,7 +58,7 @@
 		    <uib-tab index="1" heading="Volunteer">
 		    	<h3>Volunteer Overview</h3>
 		    	<input placeholder="Search" class="form-control search-input" ng-model="searchVolunteer" type="text" />
-		    	<table class="table table-bordered">
+		    	<table class="table table-bordered table-striped table-hover">
 					<tr>
 						<th>Name</th>
 						<th>Availability</th>
@@ -77,22 +77,28 @@
 		    <uib-tab index="2" heading="Deliveries">
 		    	<h3>Deliveries Overview</h3>
 		    	<input placeholder="Search" class="form-control search-input" ng-model="searchDeliveries" type="text" />
-		    	<table class="table table-bordered">
+		    	<table class="table table-bordered table-striped table-hover table-responsive">
 					<tr>
 						<th>#</th>
 						<th>Donor</th>
-						<th>Donor ID</th>
 						<th>Location</th>
 						<th>Time</th>
 						<th>Food Details</th>
+						<th>Status</th>
 					</tr>
 					<tr ng-repeat="delivery in deliveries | filter:searchDeliveries" class="repeated-item">
 						<td>{{$index + 1}}</td>
 						<td>{{ delivery.donor }}</td>
-						<td>{{ delivery.donorId }}</td>
 						<td>{{ delivery.location }}</td>
 						<td>{{ delivery.time }}</td>
 						<td>{{ delivery.food }}</td>
+						<td>
+							<div ng-show="delivery.status === 0">Posted</div>
+							<div ng-show="delivery.status === 1">Responded</div>
+							<div ng-show="delivery.status === 2">Picked up</div>
+							<div ng-show="delivery.status === 3">Agency</div>
+							<div ng-show="delivery.status !== 0 && delivery.status !== 1 && delivery.status !== 2 && delivery.status !== 3">N/A</div>
+						</td>
 					</tr>
 				</table>
 		    </uib-tab>

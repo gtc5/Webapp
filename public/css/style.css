@@ -30,6 +30,9 @@ input{
     font-family: 'Raleway', sans-serif;
     font-size: 10px;
 }
+.table-nonfluid {
+   width: auto !important;
+}
 .logo{
     width: 90px;
 }
