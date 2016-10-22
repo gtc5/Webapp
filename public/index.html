@@ -16,102 +16,87 @@
 	<script src="libs/jquery/dist/jquery.js"></script>
 
 	<!-- FONTS -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Raleway">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Raleway">
 	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
 
 	<!-- ICONS -->
 	<link rel="stylesheet" href="libs/bootstrap-social/bootstrap-social.css">
 
 	<!-- ANGULAR CUSTOM -->
+	<script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script src="js/controllers/MainCtrl.js"></script>
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
+
 </head>
 <body ng-app="SecondHarvestApp">
 <div class="container">
 	<div class="row">
-		<h1><strong>Second Harvest</strong> Admin</h1>
+		<h1>
+			<img src="resource/second_harvest_logo.jpg" class="logo">
+			<strong>Second Harvest</strong> Admin
+		</h1>
 		<h4>Overview</h4>
 	</div>
-	
 	<div class="row">
-		<div class="col-md-6">
-			<h3>Doner</h3>
-			<table class="table table-bordered table-hover">
-				<tr>
-					<th>1st</th>
-					<th>2nd</th>
-					<th>3rd</th>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-			</table>
-		</div>
-		<div class="col-md-6">
-			<h3>Volunteer</h3>
-			<table class="table table-bordered">
-				<tr>
-					<th>1st</th>
-					<th>2nd</th>
-					<th>3rd</th>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-				<tr>
-					<td>First</td>
-					<td>Second</td>
-					<td>Third</td>
-				</tr>
-			</table>
-		</div>
+		<div ng-controller="MainController">
+		 <uib-tabset active="active">
+		    <uib-tab index="0" heading="Donor">
+		    	<h3>Donor Overview</h3>
+		    	<table class="table table-bordered">
+					<tr>
+						<th>Name</th>
+						<th>Location</th>
+					</tr>
+					<tr ng-repeat="donor in donors">
+						<td>{{ donor.name }}</td>
+						<td>{{ donor.location }}</td>
+					</tr>
+					
+				</table>
+		    </uib-tab>
+		    <uib-tab index="1" heading="Volunteer">
+		    	<h3>Volunteer Overview</h3>
+		    	<table class="table table-bordered">
+					<tr>
+						<th>Name</th>
+						<th>Availability</th>
+					</tr>
+					<tr ng-repeat="volunteer in volunteers">
+						<td>{{ volunteer.name }}</td>
+						<td>
+							<ul ng-repeat="(time, location) in volunteer.availability">
+								<li>{{ time }} | {{ location }}</li>
+							</ul>
+						</td>
+					</tr>
+					
+				</table>
+		    </uib-tab>
+		    <uib-tab index="2" heading="Deliveries">
+		    	<h3>Deliveries Overview</h3>
+		    	<table class="table table-bordered">
+					<tr>
+						<th>Donor</th>
+						<th>Donor ID</th>
+						<th>Location</th>
+						<th>Time</th>
+						<th>Food Details</th>
+					</tr>
+					<tr ng-repeat="delivery in deliveries">
+						<td>{{ delivery.donor }}</td>
+						<td>{{ delivery.donorId }}</td>
+						<td>{{ delivery.location }}</td>
+						<td>{{ delivery.time }}</td>
+						<td>{{ delivery.food }}</td>
+					</tr>
+				</table>
+		    </uib-tab>
+		    
+		  </uib-tabset>
+		  </div>
 	</div>
-	<div ng-controller="MainController">
+	
 	
 	
 		<!-- <div class="social-container">
@@ -153,7 +138,7 @@
 		    		</div>
     		</div>
 		</div> -->
-	</div>
+	
 </div>
 </body>
 </html>
