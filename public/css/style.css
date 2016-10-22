@@ -21,6 +21,34 @@ table{
     margin: 20px 0;
     color: #000;
 }
+th{
+    background: #89c638;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+input{
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+}
 .logo{
     width: 90px;
+}
+.search-input{
+    width: 300px;
+}
+.btn-default{
+    -webkit-transition: background 1200ms; /* Safari */
+    transition: background 1200ms;
+}
+.btn-default:hover{
+    color: #fff;
+    background: #89c638;
+    text-shadow: 1px 1px #000;
+    -webkit-transition: background 200ms; /* Safari */
+    transition: background 200ms;
+}
+.form-control:focus{
+    border-color: #89c638;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px #89c638;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px #89c638;
 }

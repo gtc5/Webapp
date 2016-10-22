@@ -9,6 +9,7 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
 
 	<!-- JS -->
 	<script src="libs/angular/angular.min.js"></script>
@@ -19,13 +20,11 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Raleway">
 	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
 
-	<!-- ICONS -->
-	<link rel="stylesheet" href="libs/bootstrap-social/bootstrap-social.css">
-
 	<!-- ANGULAR CUSTOM -->
 	<script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script src="js/controllers/MainCtrl.js"></script>
 	<script src="js/appRoutes.js"></script>
+	<script src="libs/angular-animate/angular-animate.js"></script>
 	<script src="js/app.js"></script>
 
 </head>
@@ -43,12 +42,13 @@
 		 <uib-tabset active="active">
 		    <uib-tab index="0" heading="Donor">
 		    	<h3>Donor Overview</h3>
+		    	<input placeholder="Search" class="form-control search-input" ng-model="searchDonor" type="text" />
 		    	<table class="table table-bordered">
 					<tr>
 						<th>Name</th>
 						<th>Location</th>
 					</tr>
-					<tr ng-repeat="donor in donors">
+					<tr ng-repeat="donor in donors | filter:searchDonor" class="repeated-item">
 						<td>{{ donor.name }}</td>
 						<td>{{ donor.location }}</td>
 					</tr>
@@ -57,12 +57,13 @@
 		    </uib-tab>
 		    <uib-tab index="1" heading="Volunteer">
 		    	<h3>Volunteer Overview</h3>
+		    	<input placeholder="Search" class="form-control search-input" ng-model="searchVolunteer" type="text" />
 		    	<table class="table table-bordered">
 					<tr>
 						<th>Name</th>
 						<th>Availability</th>
 					</tr>
-					<tr ng-repeat="volunteer in volunteers">
+					<tr ng-repeat="volunteer in volunteers | filter:searchVolunteer" class="repeated-item">
 						<td>{{ volunteer.name }}</td>
 						<td>
 							<ul ng-repeat="(time, location) in volunteer.availability">
@@ -75,15 +76,18 @@
 		    </uib-tab>
 		    <uib-tab index="2" heading="Deliveries">
 		    	<h3>Deliveries Overview</h3>
+		    	<input placeholder="Search" class="form-control search-input" ng-model="searchDeliveries" type="text" />
 		    	<table class="table table-bordered">
 					<tr>
+						<th>#</th>
 						<th>Donor</th>
 						<th>Donor ID</th>
 						<th>Location</th>
 						<th>Time</th>
 						<th>Food Details</th>
 					</tr>
-					<tr ng-repeat="delivery in deliveries">
+					<tr ng-repeat="delivery in deliveries | filter:searchDeliveries" class="repeated-item">
+						<td>{{$index + 1}}</td>
 						<td>{{ delivery.donor }}</td>
 						<td>{{ delivery.donorId }}</td>
 						<td>{{ delivery.location }}</td>
@@ -94,6 +98,9 @@
 		    </uib-tab>
 		    
 		  </uib-tabset>
+		  <form method="get" action="resource/data.csv">
+		  	<button type="submit" class="btn btn-default">Download CSV</button>
+		  </form>
 		  </div>
 	</div>
 	
