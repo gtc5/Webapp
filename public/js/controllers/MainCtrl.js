@@ -13,4 +13,17 @@ angular.module('MainCtrl', ['ui.bootstrap']).controller('MainController', functi
 	$http.jsonp(url_deliveries).success(function(data){
 		$scope.deliveries = data;
 	});
+
+	setInterval(function(){
+		$http.jsonp(url_volunteers).success(function(data){
+			$scope.volunteers = data;
+		});
+		$http.jsonp(url_donors).success(function(data){
+			$scope.donors = data;
+		});
+		$http.jsonp(url_deliveries).success(function(data){
+			$scope.deliveries = data;
+		});
+		$scope.$apply();
+	}, 5000);
 });
