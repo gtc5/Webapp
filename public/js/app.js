@@ -1,1 +1,1 @@
-angular.module('SecondHarvestApp', ['ngRoute', 'appRoutes', 'ngAnimate', 'MainCtrl']);
+angular.module('SecondHarvestApp', ['ngRoute', 'appRoutes', 'MainCtrl']);
