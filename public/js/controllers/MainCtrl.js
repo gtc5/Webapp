@@ -25,5 +25,5 @@ angular.module('MainCtrl', ['ui.bootstrap']).controller('MainController', functi
 			$scope.deliveries = data;
 		});
 		$scope.$apply();
-	}, 5000);
+	}, 1000);
 });
