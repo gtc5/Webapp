@@ -6,6 +6,6 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-bootstrap": "^2.2.0",
-    "angular-animate": "^1.5.8"
+    "angular-animate": "^1.2.0"
   }
 }
